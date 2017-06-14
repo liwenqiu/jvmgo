@@ -1,12 +1,13 @@
 package rtda
 
 type Thread struct {
-	pc int
+	pc    int  // the address of the instruction currently being executed
 	stack *Stack
+	// todo
 }
 
 func NewThread() *Thread {
-    return &Thread{stack: newStack(1024),}
+	return &Thread{stack: newStack(1024)}
 }
 
 func (self *Thread) PC() int {
@@ -18,13 +19,17 @@ func (self *Thread) SetPC(pc int) {
 }
 
 func (self *Thread) PushFrame(frame *Frame) {
-    self.stack.push(frame)
+	self.stack.push(frame)
 }
 
 func (self *Thread) PopFrame() *Frame {
-    return self.stack.pop()
+	return self.stack.pop()
 }
 
 func (self *Thread) CurrentFrame() *Frame {
-    return self.stack.top()
+	return self.stack.top()
+}
+
+func (self *Thread) NewFrame(maxLocals, maxStack uint) *Frame {
+	return newFrame(self, maxLocals, maxStack)
 }
