@@ -98,6 +98,11 @@ func (self *OperandStack) Clear() {
 }
 
 
+// todo
+func NewOperandStack(maxStack uint) *OperandStack {
+	return newOperandStack(maxStack)
+}
+
 func (self *OperandStack) GetRefFromTop(n uint) *heap.Object {
 	return self.slots[self.size - 1 - n].ref
 }

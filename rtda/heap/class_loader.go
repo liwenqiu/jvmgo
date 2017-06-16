@@ -119,6 +119,7 @@ func (self *ClassLoader) readClass(name string) ([]byte, classpath.Entry) {
 // jvms 5.3.5
 func (self *ClassLoader) defineClass(data []byte) *Class {
 	class := parseClass(data)
+	hackClass(class)
 	class.loader = self
 	resolveSuperClass(class)
 	resolveInterfaces(class)
@@ -232,5 +233,13 @@ func initStaticFinalVar(class *Class, field *Field) {
 			jStr := JString(class.Loader(), goStr)
 			vars.SetRef(slotId, jStr)
 		}
+	}
+}
+
+// todo
+func hackClass(class *Class) {
+	if class.name == "java/lang/ClassLoader" {
+		loadLibrary := class.GetStaticMethod("loadLibrary", "(Ljava/lang/Class;Ljava/lang/String;Z)V")
+		loadLibrary.code = []byte{0xb1} // return void
 	}
 }

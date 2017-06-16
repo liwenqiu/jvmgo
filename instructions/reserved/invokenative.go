@@ -1,12 +1,18 @@
 package reserved
 
 import (
-	"jvmgo/native"
 	"jvmgo/instructions/base"
 	"jvmgo/rtda"
-	_ "jvmgo/native/java/lang"
-	_ "jvmgo/native/sun/misc"
+    "jvmgo/native"
+    _ "jvmgo/native/java/io"
+    _ "jvmgo/native/java/lang"
+    _ "jvmgo/native/java/security"
+    _ "jvmgo/native/java/util/concurrent/atomic"
+    _ "jvmgo/native/sun/io"
+    _ "jvmgo/native/sun/misc"
+    _ "jvmgo/native/sun/reflect"
 )
+
 
 // Invoke native method
 type INVOKE_NATIVE struct {

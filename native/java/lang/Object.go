@@ -1,18 +1,16 @@
 package lang
 
-import (
-	"jvmgo/native"
-	"jvmgo/rtda"
-	"unsafe"
-)
+import "unsafe"
+import "jvmgo/native"
+import "jvmgo/rtda"
 
 const jlObject = "java/lang/Object"
-
 
 func init() {
 	native.Register(jlObject, "getClass", "()Ljava/lang/Class;", getClass)
 	native.Register(jlObject, "hashCode", "()I", hashCode)
 	native.Register(jlObject, "clone", "()Ljava/lang/Object;", clone)
+	native.Register(jlObject, "notifyAll", "()V", notifyAll)
 }
 
 // public final native Class<?> getClass();
@@ -22,7 +20,6 @@ func getClass(frame *rtda.Frame) {
 	class := this.Class().JClass()
 	frame.OperandStack().PushRef(class)
 }
-
 
 // public native int hashCode();
 // ()I
@@ -43,4 +40,10 @@ func clone(frame *rtda.Frame) {
 	}
 
 	frame.OperandStack().PushRef(this.Clone())
+}
+
+// public final native void notifyAll();
+// ()V
+func notifyAll(frame *rtda.Frame) {
+	// todo
 }
