@@ -8,6 +8,7 @@ type Instruction interface {
 }
 
 
+
 type NoOperandsInstruction struct {
 }
 
@@ -24,6 +25,7 @@ func (self *BranchInstruction) FetchOperands(reader *BytecodeReader) {
 }
 
 
+
 type Index8Instruction struct {
 	Index uint
 }
@@ -31,6 +33,7 @@ type Index8Instruction struct {
 func (self *Index8Instruction) FetchOperands(reader *BytecodeReader) {
 	self.Index = uint(reader.ReadUint8())
 }
+
 
 
 type Index16Instruction struct {

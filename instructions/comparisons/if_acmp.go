@@ -16,6 +16,8 @@ func (self *IF_ACMPEQ) Execute(frame *rtda.Frame) {
 	}
 }
 
+
+
 type IF_ACMPNE struct {
 	base.BranchInstruction
 }
@@ -25,6 +27,8 @@ func (self *IF_ACMPNE) Execute(frame *rtda.Frame) {
 		base.Branch(frame, self.Offset)
 	}
 }
+
+
 
 func _acmp(frame *rtda.Frame) bool {
 	stack := frame.OperandStack()

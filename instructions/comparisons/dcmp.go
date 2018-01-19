@@ -14,6 +14,8 @@ func (self *DCMPG) Execute(frame *rtda.Frame) {
 	_dcmp(frame, true)
 }
 
+
+
 type DCMPL struct {
 	base.NoOperandsInstruction
 }
@@ -21,6 +23,8 @@ type DCMPL struct {
 func (self *DCMPL) Execute(frame *rtda.Frame) {
 	_dcmp(frame, false)
 }
+
+
 
 func _dcmp(frame *rtda.Frame, gFlag bool) {
 	stack := frame.OperandStack()

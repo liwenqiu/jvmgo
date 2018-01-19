@@ -15,6 +15,7 @@ func (self *FCMPG) Execute(frame *rtda.Frame) {
 }
 
 
+
 type FCMPL struct {
 	base.NoOperandsInstruction
 }
@@ -22,6 +23,7 @@ type FCMPL struct {
 func (self *FCMPL) Execute(frame *rtda.Frame) {
 	_fcmp(frame, false)
 }
+
 
 
 func _fcmp(frame *rtda.Frame, gFlag bool) {

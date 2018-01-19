@@ -25,6 +25,8 @@ func (self Slots) GetInt(index uint) int32 {
 	return self[index].num
 }
 
+
+
 func (self Slots) SetFloat(index uint, val float32) {
 	bits := math.Float32bits(val)
 	self[index].num = int32(bits)
@@ -33,6 +35,7 @@ func (self Slots) GetFloat(index uint) float32 {
 	bits := uint32(self[index].num)
 	return math.Float32frombits(bits)
 }
+
 
 // long consumes two slots
 func (self Slots) SetLong(index uint, val int64) {
@@ -45,6 +48,7 @@ func (self Slots) GetLong(index uint) int64 {
 	return int64(high)<<32 | int64(low)
 }
 
+
 // double consumes two slots
 func (self Slots) SetDouble(index uint, val float64) {
 	bits := math.Float64bits(val)
@@ -54,6 +58,8 @@ func (self Slots) GetDouble(index uint) float64 {
 	bits := uint64(self.GetLong(index))
 	return math.Float64frombits(bits)
 }
+
+
 
 func (self Slots) SetRef(index uint, ref *Object) {
 	self[index].ref = ref

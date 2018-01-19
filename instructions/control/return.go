@@ -14,6 +14,7 @@ func (self *RETURN) Execute(frame *rtda.Frame) {
 	frame.Thread().PopFrame()
 }
 
+
 // Return reference from method
 type ARETURN struct {
 	base.NoOperandsInstruction
@@ -26,6 +27,7 @@ func (self *ARETURN) Execute(frame *rtda.Frame) {
 	ref := currentFrame.OperandStack().PopRef()
 	invokerFrame.OperandStack().PushRef(ref)
 }
+
 
 // Return double from method
 type DRETURN struct {
@@ -40,6 +42,7 @@ func (self *DRETURN) Execute(frame *rtda.Frame) {
 	invokerFrame.OperandStack().PushDouble(val)
 }
 
+
 // Return float from method
 type FRETURN struct {
 	base.NoOperandsInstruction
@@ -53,6 +56,7 @@ func (self *FRETURN) Execute(frame *rtda.Frame) {
 	invokerFrame.OperandStack().PushFloat(val)
 }
 
+
 // Return int from method
 type IRETURN struct {
 	base.NoOperandsInstruction
@@ -65,6 +69,7 @@ func (self *IRETURN) Execute(frame *rtda.Frame) {
 	val := currentFrame.OperandStack().PopInt()
 	invokerFrame.OperandStack().PushInt(val)
 }
+
 
 // Return double from method
 type LRETURN struct {

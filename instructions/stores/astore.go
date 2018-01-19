@@ -46,6 +46,7 @@ func (self *ASTORE_3) Execute(frame *rtda.Frame) {
 	_astore(frame, 3)
 }
 
+
 func _astore(frame *rtda.Frame, index uint) {
 	ref := frame.OperandStack().PopRef()
 	frame.LocalVars().SetRef(index, ref)
